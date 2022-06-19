@@ -1,5 +1,5 @@
 # LoopiaDnsUpdater
-Updates the DNS with the ip adress of the running machine
+Updates the DNS with the ip adress of the running machine. The program will run every 24h, starting from program start.
 
 #### Must use the following environment variables when running this container:password,username,hostname
 
