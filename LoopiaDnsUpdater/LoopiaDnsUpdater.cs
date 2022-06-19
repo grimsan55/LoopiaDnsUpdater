@@ -44,9 +44,10 @@ namespace LoopiaDnsUpdater
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64EncodedAuthenticationString);
 
                 var dnsUpdateUrl = $"https://dyndns.loopia.se/?hostname={hostname}&myip={myIpAddress}&username={username}&password={password}";
+                
+                var loopiaString = await _client.GetStringAsync(dnsUpdateUrl);
 
-
-                var result = await _client.GetStringAsync(dnsUpdateUrl);
+                var result = MapLoopiaStringToResult(loopiaString, myIpAddress);
 
                 return result;
             }
@@ -55,6 +56,16 @@ namespace LoopiaDnsUpdater
                 Console.WriteLine(e);
                 return $"something went wrong: {e.Message}";
             }
+        }
+
+        private static string MapLoopiaStringToResult(string loopiaString, string ipAddress)
+        {
+            return loopiaString switch
+            {
+                "nochg" => $"No change in your ip-address detected ({ipAddress})",
+                "good" => $"Ip-address successfully changed ({ipAddress})",
+                _ => $"Couldn't translate result ({loopiaString}), ({ipAddress})"
+            };
         }
 
 
