@@ -37,6 +37,8 @@ namespace LoopiaDnsUpdater
                 if (string.IsNullOrEmpty(username))
                     return "empty username from environment variables";
 
+                Console.WriteLine($"username: {username}, hostname: {hostname}");
+
                 var base64EncodedAuthenticationString = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{password}"));
 
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64EncodedAuthenticationString);

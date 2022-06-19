@@ -1,11 +1,20 @@
-﻿using LoopiaDnsUpdater;
-const int oneDayInMilliSeconds = 86400000;
-
-while (true)
+﻿namespace LoopiaDnsUpdater 
 {
-    var result = DnsUpdater.UpdateDns();
+    internal class Program
+    {
+        const int oneDayInMilliSeconds = 86400000;
 
-    Console.WriteLine(result);
+        private static async Task Main(string[] args)
+        {
+            while (true)
+            {
+                var result = await DnsUpdater.UpdateDns();
 
-    Thread.Sleep(oneDayInMilliSeconds);
+                Console.WriteLine(result);
+
+                Thread.Sleep(oneDayInMilliSeconds);
+            }
+        }
+    }
 }
+
