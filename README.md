@@ -1,7 +1,7 @@
 # LoopiaDnsUpdater
 Updates the DNS with the ip adress of the running machine
 
-# Must use the following environment variables when running this container:password,username,hostname
+#### Must use the following environment variables when running this container:password,username,hostname
 
 ### Docker compose:
 
