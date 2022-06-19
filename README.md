@@ -12,4 +12,4 @@ Updates the DNS with the ip adress of the running machine
       password: myUniquePassword
       username: myUniqueUserName
       hostname: myHostName
-    restart: unless-stopped```
+    restart: unless-stopped ```
